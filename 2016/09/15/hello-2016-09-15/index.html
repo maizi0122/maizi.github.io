@@ -17,7 +17,7 @@
         
     </title>
 
-    <link rel="canonical" href="https://maizi0122.github.io/2016/09/15/hello-2015/">
+    <link rel="canonical" href="https://maizi0122.github.io/2016/09/15/hello-2016-09-15/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -27,6 +27,9 @@
 
     <!-- Pygments Highlight CSS -->
     <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- My custom style -->
+    <link rel="stylesheet" href="/css/custom.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -97,10 +100,6 @@
                     
 
                         
-                        <li>
-                            <a href="/tags/">Tag</a>
-                        </li>
-                        
                     
 
                         
@@ -113,6 +112,13 @@
                         
                         <li>
                             <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tag</a>
                         </li>
                         
                     -->
@@ -159,11 +165,12 @@
 <!-- Image to hack wechat -->
 <!-- <img src="https://maizi0122.github.io/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+<!--  background-image: url('img/post-bg-2016.jpg') -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('post-bg-2016.jpg')
+        background-image: url('/img/post-bg-2016.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -180,8 +187,9 @@
                     <h2 class="subheading">a simple question, but lots of people thought in a complicated way...</h2>
                     <span class="meta">
                         Posted by Maizi on
-                        2016-09-15
+                        2016-09-15 with <span id="busuanzi_value_page_pv"></span> times read
                     </span>
+
                 </div>
             </div>
         </div>
@@ -199,13 +207,12 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p><style type="text/css"><br>.indent{text-indent: 2em;}<br>.align_right{text-align:right;}<br>.standout_color{color:#0088ff;}<br></style></p>
-<blockquote>
+                <blockquote>
 <p>a rudimental algorithm question</p>
 <h4 id="问题描述如下"><a href="#问题描述如下" class="headerlink" title="问题描述如下:"></a>问题描述如下:</h4></blockquote>
-<div class="indent">有个一个饭店,有n张桌子,每张桌子可以招待不同数量的客人,且不能拼桌,现在来了m批客人,每批客人有两个属性,一个是客人的总数,一个是他们消费(预计)的总额</div><br><div class="indent">请设计一个算法,计算出,店家能够获得的<strong>最大利润</strong></div><br><div class="indent">测试用例:<br>3 5<br> 2 4 2<br>1 3<br>3 5<br> 3 7<br>5 9<br>1 10<br><br>3 5代表一共有3个桌子 5批客人<br>2 4 2 代表3张桌子的容量 分别是2 4 2<br>后面的1 3 代表第一批客人是1个人 消费3元 然后是第二批客人,共3人消费5元<br>这个测试用例 最后的答案是20<br></div>
+<div class="indent">有个一个饭店,有n张桌子,每张桌子可以招待不同数量的客人,且不能拼桌,现在来了m批客人,每批客人有两个属性,一个是客人的总数,一个是他们消费(预计)的总额</div><br><div class="indent">请设计一个算法,计算出,店家能够获得的<strong>最大利润</strong></div><br><div>测试用例:<br>3 5<br> 2 4 2<br>1 3<br>3 5<br> 3 7<br>5 9<br>1 10<br><br>3 5代表一共有3个桌子 5批客人<br>2 4 2 代表3张桌子的容量 分别是2 4 2<br>后面的1 3 代表第一批客人是1个人 消费3元 然后是第二批客人,共3人消费5元<br>这个测试用例 最后的答案是20<br></div>
 
-<h4 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述:"></a>算法描述:</h4><div><br>①将客人的数组按照消费降序排列<br><br>②将桌子的数组按照桌子容量升序排列<br><br>③遍历<strong>①</strong>中的数组,获取该消费金额的顾客人数,然后遍历<strong>②</strong>中的数组,若该桌的容量恰好大于或等于顾客人数且没被分配,则将该桌子分配给该批客人且标记该桌已分配,若遍历完<strong>②</strong>数组也没匹配到符合条件的,则直接放弃服务该批客人.<br><strong><em>该问题的很容易将人绕进去,很多人马上想到八皇后问题和其它方向上,却忽略了该问其实很简单,它要的是获利最大而不是去服务最大的顾客</em></strong><br></div>
+<h4 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述:"></a>算法描述:</h4><div class="indent"><br>①将客人的数组按照消费降序排列<br>②将桌子的数组按照桌子容量升序排列<br>③遍历 <strong>①</strong> 中的数组,获取该消费金额的顾客人数,然后遍历 <strong>②</strong> 中的数组,若该桌的容量恰好大于或等于顾客人数且没被分配,则将该桌子分配给该批客人且标记该桌已分配,若遍历完 <strong>②</strong> 数组也没匹配到符合条件的,则直接放弃服务该批客人.<br><strong><em>该问题的很容易将人绕进去,很多人马上想到八皇后问题和其它方向上,却忽略了该问其实很简单,它要的是获利最大而不是去服务最大的顾客</em></strong><br></div>
 
 <h4 id="最后贴上代码"><a href="#最后贴上代码" class="headerlink" title="最后贴上代码:"></a>最后贴上代码:</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ARGS_COUNT 15</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_PARAMS -1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ILLEGAL_PARAMS -2</span></div><div class="line"></div><div class="line"><span class="keyword">enum</span> order &#123;</div><div class="line">    UP, DOWN</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">enum</span> order or, <span class="keyword">int</span> **arr, <span class="keyword">int</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (*(*(arr + <span class="number">1</span>) + len++) != <span class="string">'\0'</span>) &#123;&#125;</div><div class="line">    <span class="keyword">if</span> (or == UP) <span class="comment">//升序</span></div><div class="line">        quickSort(<span class="number">0</span>, len - <span class="number">2</span>, UP, arr, len);</div><div class="line">    <span class="keyword">else</span> <span class="comment">//降序</span></div><div class="line">        quickSort(<span class="number">0</span>, len - <span class="number">2</span>, DOWN, arr, len);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">enum</span> order or, <span class="keyword">int</span> **arr, <span class="keyword">int</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (start &lt; end) &#123;</div><div class="line">        <span class="keyword">int</span> pivotPos = partition(start, end, or, arr, len);</div><div class="line">        quickSort(start, pivotPos - <span class="number">1</span>, or, arr, len);</div><div class="line">        quickSort(pivotPos + <span class="number">1</span>, end, or, arr, len);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">enum</span> order or, <span class="keyword">int</span> **arr, <span class="keyword">int</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> pivot = *(*arr + low);</div><div class="line">    <span class="keyword">int</span> pivotKey = *(*(arr + <span class="number">1</span>) + low);</div><div class="line">    <span class="keyword">int</span> pivotKey_ = *(*(arr + <span class="number">2</span>) + low);</div><div class="line">    <span class="keyword">while</span> (low &lt; high) &#123;</div><div class="line">        <span class="keyword">int</span> i;</div><div class="line">        <span class="keyword">while</span> (low &lt; high &amp;&amp;</div><div class="line">               (or == UP ? *(*(arr + <span class="number">1</span>) + high) &gt;= pivotKey : *(*(arr + <span class="number">1</span>) + high) &lt;= pivotKey))</div><div class="line">            --high;</div><div class="line">        *(*arr + low) = *(*arr + high);</div><div class="line">        *(*(arr + <span class="number">1</span>) + low) = *(*(arr + <span class="number">1</span>) + high);</div><div class="line">        *(*(arr + <span class="number">2</span>) + low) = *(*(arr + <span class="number">2</span>) + high);</div><div class="line">        <span class="keyword">while</span> (low &lt; high &amp;&amp;</div><div class="line">               (or == UP ? *(*(arr + <span class="number">1</span>) + low) &lt;= pivotKey : *(*(arr + <span class="number">1</span>) + low) &gt;= pivotKey))</div><div class="line">            ++low;</div><div class="line">        *(*arr + high) = *(*arr + low);</div><div class="line">        *(*(arr + <span class="number">1</span>) + high) = *(*(arr + <span class="number">1</span>) + low);</div><div class="line">        *(*(arr + <span class="number">2</span>) + high) = *(*(arr + <span class="number">2</span>) + low);</div><div class="line">    &#125;</div><div class="line">    *(*arr + low) = pivot;</div><div class="line">    *(*(arr + <span class="number">1</span>) + low) = pivotKey;</div><div class="line">    *(*(arr + <span class="number">2</span>) + low) = pivotKey_;</div><div class="line">    <span class="keyword">return</span> low;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">checkArgs</span><span class="params">(<span class="keyword">int</span> *argvArr, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">    <span class="keyword">size_t</span> len = <span class="built_in">strlen</span>(argv);</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">char</span> buf[<span class="number">32</span>] = &#123;&#125;;</div><div class="line">    <span class="keyword">char</span> index = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="keyword">char</span> tmp = argv[i];</div><div class="line">        <span class="keyword">if</span> (tmp == <span class="string">','</span>) &#123;<span class="comment">//截数字</span></div><div class="line">            buf[count] = <span class="string">'\0'</span>;</div><div class="line">            argvArr[index++] = atoi(buf);</div><div class="line">            count = <span class="number">0</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tmp &gt; <span class="number">47</span> &amp;&amp; tmp &lt; <span class="number">58</span>) &#123;</div><div class="line">            buf[count++] = tmp;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125; <span class="keyword">else</span><span class="comment">//非法字符</span></div><div class="line">            <span class="keyword">return</span> ILLEGAL_PARAMS;</div><div class="line">    &#125;</div><div class="line">    buf[count] = <span class="string">'\0'</span>;</div><div class="line">    argvArr[index++] = atoi(buf);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> **arr, <span class="keyword">int</span> count, <span class="keyword">int</span> index, <span class="keyword">int</span> delta, <span class="keyword">int</span> *params, <span class="keyword">char</span> flag)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; count; ++i) &#123;</div><div class="line">        *(*arr + i) = i + <span class="number">1</span>;</div><div class="line">        *(*(arr + <span class="number">1</span>) + i) = *(params + (index + i * delta));</div><div class="line">        <span class="keyword">if</span> (flag)</div><div class="line">            *(*(arr + <span class="number">2</span>) + i) = *(params + (index - <span class="number">1</span> + i * delta));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">schedule</span><span class="params">(<span class="keyword">int</span> **tableNo, <span class="keyword">int</span> taNo, <span class="keyword">int</span> **teamNo, <span class="keyword">int</span> teNo)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">int</span> profit = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; teNo; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> curTeamNo = *(*teamNo + i);</div><div class="line">        <span class="keyword">int</span> curTeamPay = *(*(teamNo + <span class="number">1</span>) + i);<span class="comment">//当前该批客人的总消费</span></div><div class="line">        <span class="keyword">int</span> curTeamLen = *(*(teamNo + <span class="number">2</span>) + i);<span class="comment">//当前该批客人的人数</span></div><div class="line">        <span class="keyword">int</span> j;</div><div class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; taNo; ++j) &#123;</div><div class="line">            <span class="keyword">if</span> (*(*(tableNo + <span class="number">2</span>) + j) == <span class="number">0</span> &amp;&amp; *(*(tableNo + <span class="number">1</span>) + j) &gt;= curTeamLen) &#123;</div><div class="line">                *(*(tableNo + <span class="number">2</span>) + j) = i + <span class="number">1</span>;<span class="comment">//记录该桌服务的客人的teamNo角标+1</span></div><div class="line">                profit += curTeamPay;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;<span class="comment">//else&#123;&#125;  如果找不到能容纳该批客人的桌子,那就直接放弃服务该批客人</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> profit;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> args, <span class="keyword">char</span> **argv)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (args != <span class="number">2</span>) &#123;</div><div class="line">        perror(<span class="string">"please input the params with ',' spliting. "</span>);</div><div class="line">        <span class="keyword">return</span> ERROR_PARAMS;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> arr[ARGS_COUNT];</div><div class="line">    <span class="keyword">if</span> (checkArgs(arr, *(argv + <span class="number">1</span>)) &lt; <span class="number">0</span>) &#123;</div><div class="line">        perror(<span class="string">"please check your params with character of NaN. "</span>);</div><div class="line">        <span class="keyword">return</span> ILLEGAL_PARAMS;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">int</span> *tableNo[<span class="number">3</span>];<span class="comment">//[桌子编号,桌子容量,客人批号,当前客人的数组中的序列号]</span></div><div class="line">    *tableNo = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(arr[<span class="number">0</span>] * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    *(tableNo + <span class="number">1</span>) = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(arr[<span class="number">0</span>] * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    *(tableNo + <span class="number">2</span>) = (<span class="keyword">int</span> *) <span class="built_in">calloc</span>(arr[<span class="number">0</span>], <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line"></div><div class="line">    <span class="keyword">int</span> *teamNo[<span class="number">3</span>];<span class="comment">//[客人批号,该批客人总消费,该批客人人数]</span></div><div class="line">    *teamNo = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(arr[<span class="number">0</span>] * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    *(teamNo + <span class="number">1</span>) = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(arr[<span class="number">0</span>] * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    *(teamNo + <span class="number">2</span>) = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(arr[<span class="number">0</span>] * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line"></div><div class="line">    init(tableNo, arr[<span class="number">0</span>], <span class="number">2</span>, <span class="number">1</span>, arr, <span class="number">0</span>);</div><div class="line">    init(teamNo, arr[<span class="number">1</span>], <span class="number">6</span>, <span class="number">2</span>, arr, <span class="number">1</span>);</div><div class="line">    sort(UP, tableNo, arr[<span class="number">0</span>]);</div><div class="line">    sort(DOWN, teamNo, arr[<span class="number">1</span>]);</div><div class="line">    <span class="keyword">int</span> ret = schedule(tableNo, arr[<span class="number">0</span>], teamNo, arr[<span class="number">1</span>]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"max profit : %d\nscheduling plan:\n"</span>, ret);</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; arr[<span class="number">0</span>]; ++i) &#123;</div><div class="line">        <span class="keyword">if</span> (*(*(tableNo + <span class="number">2</span>) + i) != <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> index = *(*(tableNo + <span class="number">2</span>) + i);</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"table %d is distributed to team %d with %d people and %d payment.\n"</span>,</div><div class="line">                   *(*tableNo + i),</div><div class="line">                   *(*teamNo + index - <span class="number">1</span>),</div><div class="line">                   *(*(teamNo + <span class="number">2</span>) + index - <span class="number">1</span>),</div><div class="line">                   *(*(teamNo + <span class="number">1</span>) + index - <span class="number">1</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//释放资源</span></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; arr[<span class="number">0</span>]; ++i) &#123;</div><div class="line">        <span class="built_in">free</span>(*(tableNo + i));</div><div class="line">        <span class="built_in">free</span>(*(teamNo + i));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="附上测试结果"><a href="#附上测试结果" class="headerlink" title="附上测试结果:"></a>附上测试结果:</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">max profit : <span class="number">20</span></div><div class="line">scheduling plan:</div><div class="line">table <span class="number">1</span> <span class="keyword">is</span> distributed <span class="keyword">to</span> team <span class="number">5</span> <span class="keyword">with</span> <span class="number">1</span> people <span class="keyword">and</span> <span class="number">10</span> payment.</div><div class="line">table <span class="number">3</span> <span class="keyword">is</span> distributed <span class="keyword">to</span> team <span class="number">1</span> <span class="keyword">with</span> <span class="number">1</span> people <span class="keyword">and</span> <span class="number">3</span> payment.</div><div class="line">table <span class="number">2</span> <span class="keyword">is</span> distributed <span class="keyword">to</span> team <span class="number">3</span> <span class="keyword">with</span> <span class="number">3</span> people <span class="keyword">and</span> <span class="number">7</span> payment.</div></pre></td></tr></table></figure>
@@ -219,11 +226,14 @@
                 </style>
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="2016/09/15/hello-2015/"
+                    data-thread-key="2016/09/15/hello-2016-09-15/"
                     data-title="A question of interview from DIDI-BUS"
-                    data-url="https://maizi0122.github.io/2016/09/15/hello-2015/"
-                    data-images="https://maizi0122.github.io/2016/09/15/hello-2015/post-bg-2016.jpg"
-                    data-content=".indent{text-indent: 2em;}.align_right{text-ali... | 麦子的博客 - IT匠人 | Maizi&#39;s Blog - a craftsman of Information Technology " >
+                    data-url="https://maizi0122.github.io/2016/09/15/hello-2016-09-15/"
+                    data-images="https://maizi0122.github.io/2016/09/15/hello-2016-09-15/img/post-bg-2016.jpg"
+                    data-content="
+a rudimental algorithm question
+问题描述如下:
+有个一个饭店... | 麦子的博客 - IT匠人 | Maizi&#39;s Blog - a craftsman of Information Technology " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -248,9 +258,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/09/15/hello-2015/"
+                        data-thread-key="2016/09/15/hello-2016-09-15/"
                         data-title="A question of interview from DIDI-BUS"
-                        data-url="https://maizi0122.github.io/2016/09/15/hello-2015/" >
+                        data-url="https://maizi0122.github.io/2016/09/15/hello-2016-09-15/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -338,8 +348,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "maizi0122.github.io";
-    var disqus_identifier = "https://maizi0122.github.io/2016/09/15/hello-2015/";
-    var disqus_url = "https://maizi0122.github.io/2016/09/15/hello-2015/";
+    var disqus_identifier = "https://maizi0122.github.io/2016/09/15/hello-2016-09-15/";
+    var disqus_url = "https://maizi0122.github.io/2016/09/15/hello-2016-09-15/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -419,13 +429,14 @@
                 </ul>
                 <p class="copyright text-muted">
                     Copyright &copy; Maizi&#39;s Blog 2016
-                    <br>
+                    <br/>
                     Powered by <a href="http://maizi0122.github.io">Maizi</a><br/>
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
                         src="https://ghbtns.com/github-btn.html?user=maizi0122&repo=Ripened&type=star&count=true" >
-                    </iframe>
+                    </iframe><br/>
+                    <span id="busuanzi_value_site_pv"></span> visit
                 </p>
             </div>
         </div>
@@ -536,6 +547,9 @@
 
 <!-- Side Catalog -->
 
+
+<!-- visit counter -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

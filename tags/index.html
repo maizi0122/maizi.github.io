@@ -28,6 +28,9 @@
     <!-- Pygments Highlight CSS -->
     <link rel="stylesheet" href="/css/highlight.css">
 
+    <!-- My custom style -->
+    <link rel="stylesheet" href="/css/custom.css">
+
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
@@ -97,10 +100,6 @@
                     
 
                         
-                        <li>
-                            <a href="/tags/">Tag</a>
-                        </li>
-                        
                     
 
                         
@@ -113,6 +112,13 @@
                         
                         <li>
                             <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tag</a>
                         </li>
                         
                     -->
@@ -178,21 +184,12 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#life" title="life" rel="0">life</a>
-                
                     <a href="#Algorithm" title="Algorithm" rel="1">Algorithm</a>
                 
             </div>
 
             <!-- 标签列表 -->
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="life">
-                    <span class="tag-text">life</span>
-                </span>
-                
-            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Algorithm">
@@ -204,7 +201,7 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2016/09/15/hello-2015/">
+                     <a href="/2016/09/15/hello-2016-09-15/">
                         <h2 class="post-title">
                             A question of interview from DIDI-BUS
                         </h2>
@@ -258,13 +255,14 @@
                 </ul>
                 <p class="copyright text-muted">
                     Copyright &copy; Maizi&#39;s Blog 2016
-                    <br>
+                    <br/>
                     Powered by <a href="http://maizi0122.github.io">Maizi</a><br/>
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
                         src="https://ghbtns.com/github-btn.html?user=maizi0122&repo=Ripened&type=star&count=true" >
-                    </iframe>
+                    </iframe><br/>
+                    <span id="busuanzi_value_site_pv"></span> visit
                 </p>
             </div>
         </div>
@@ -375,6 +373,9 @@
 
 <!-- Side Catalog -->
 
+
+<!-- visit counter -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
