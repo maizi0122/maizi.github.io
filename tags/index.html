@@ -17,7 +17,7 @@
         
     </title>
 
-    <link rel="canonical" href="https://maizi0122.github.com/tags/">
+    <link rel="canonical" href="https://maizi0122.github.io/tags/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -82,9 +82,24 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
+                    <li>
+                        <a href="/archives">Archives</a>
+                    </li>
+                    <li>
+                        <a href="/tags">Tags</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    <!--
 
+                        
                     
 
+                        
+                        <li>
+                            <a href="/tags/">Tag</a>
+                        </li>
                         
                     
 
@@ -100,15 +115,8 @@
                             <a href="/archives/">Archives</a>
                         </li>
                         
-                    
+                    -->
 
-                        
-                        <li>
-                            <a href="/tags/">Tag</a>
-                        </li>
-                        
-                    
-                    
                 </ul>
             </div>
         </div>
@@ -170,7 +178,9 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#life" title="life" rel="1">life</a>
+                    <a href="#life" title="life" rel="0">life</a>
+                
+                    <a href="#Algorithm" title="Algorithm" rel="1">Algorithm</a>
                 
             </div>
 
@@ -182,6 +192,13 @@
                     <span class="tag-text">life</span>
                 </span>
                 
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Algorithm">
+                    <span class="tag-text">Algorithm</span>
+                </span>
+                
                   <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
@@ -189,11 +206,11 @@
                  <div class="post-preview">
                      <a href="/2016/09/15/hello-2015/">
                         <h2 class="post-title">
-                            Welcome to Maizi's Blog
+                            A question of interview from DIDI-BUS
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                 "Hello World, Hello Blog"
+                                a simple question, but lots of people thought in a complicated way...
                             </h3>
                         
                     </a>
@@ -299,7 +316,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("https://maizi0122.github.com/js/jquery.tagcloud.js",function(){
+        async("https://maizi0122.github.io/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -362,7 +379,7 @@
 
 
 <!-- Image to hack wechat -->
-<img src="https://maizi0122.github.com/img/icon_wechat.png" width="0" height="0" />
+<img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
