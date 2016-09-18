@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Maizi&#39;s Blog - a craftsman of Information Technology">
+    <meta name="keyword"  content="麦子,maizi,IT匠人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          A question about how to judge an array is the back sequence of a binary tree - 麦子的博客 - IT匠人 | Maizi&#39;s Blog - a craftsman of Information Technology
+        
+    </title>
+
+    <link rel="canonical" href="https://maizi0122.github.io/2016/09/15/BACK-SEQUENCE-OF-BINARY-TREE-JUDGE-2016-09-15/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- My custom style -->
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!-- link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" -->
+    <link href="https://maizi0122.github.io/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Maizi&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/archives">Archives</a>
+                    </li>
+                    <li>
+                        <a href="/tags">Tags</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    <!--
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tag</a>
+                        </li>
+                        
+                    -->
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://maizi0122.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+<!--  background-image: url('img/post-bg-2016.jpg') -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/post-bg-2016.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+                        
+                          <a class="tag" href="/tags/#Binary Tree" title="Binary Tree">Binary Tree</a>
+                        
+                    </div>
+                    <h1>A question about how to judge an array is the back sequence of a binary tree</h1>
+                    <h2 class="subheading">know everything about the binary tree can do it easily</h2>
+                    <span class="meta">
+                        Posted by Maizi on
+                        2016-09-15 with <span id="busuanzi_value_page_pv"></span> time read
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p><font class="standout_color">二叉树相关的算法问题</font></p>
+<h4 id="问题描述如下"><a href="#问题描述如下" class="headerlink" title="问题描述如下:"></a>问题描述如下:</h4></blockquote>
+<p><div class="indent">设计一个算法,判断是一个数组的元素顺序是某棵二叉树的后续遍历的顺序</div></p>
+<h4 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述:"></a>算法描述:</h4><p><div class="indent"><br>算法分析:如果这个数组的元素顺序是某棵二叉树的后续遍历的顺序,那么从数组的最后一个元素依次向前取元素可以重建这棵二叉树.<br><br>①从数组的最后一个元素依次向前取元素重建这棵二叉树.<br><br>③后续遍历 <strong>①</strong> 中的重建的二叉树依次序与数组中的元素对比,如果都相同则说明数组的元素顺序是某棵二叉树的后续遍历的顺序,否则则不是<br></div></p>
+<h4 id="最后贴上代码"><a href="#最后贴上代码" class="headerlink" title="最后贴上代码:"></a>最后贴上代码:</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> btree bt;</div><div class="line"><span class="comment">//二叉树的节点结构定义</span></div><div class="line"><span class="keyword">struct</span> btree &#123;</div><div class="line">    <span class="keyword">int</span> <span class="number">_</span>val;</div><div class="line">    <span class="keyword">int</span> <span class="number">_</span>count;<span class="comment">//此处优化结构,当元素重复时将该节点的计数加一</span></div><div class="line">    bt *<span class="number">_l</span>c;</div><div class="line">    bt *<span class="number">_</span>rc;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 挂载节点</div><div class="line"> * @param head 二叉树的根节点的指针</div><div class="line"> * @param val 待插叙节点的值</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(bt *head, <span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line"></div><div class="line">    bt *node = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(bt));</div><div class="line">    node-&gt;<span class="number">_</span>val = val;</div><div class="line">    node-&gt;<span class="number">_</span>count = <span class="number">1</span>;</div><div class="line">    node-&gt;<span class="number">_l</span>c = <span class="literal">NULL</span>;</div><div class="line">    node-&gt;<span class="number">_</span>rc = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line">    bt *tmp = head;</div><div class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (tmp-&gt;<span class="number">_</span>val == val) &#123;</div><div class="line">            tmp-&gt;<span class="number">_</span>count++;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tmp-&gt;<span class="number">_</span>val &gt; val) &#123;</div><div class="line">            <span class="keyword">if</span> (tmp-&gt;<span class="number">_l</span>c == <span class="literal">NULL</span>)</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                tmp = tmp-&gt;<span class="number">_l</span>c;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (tmp-&gt;<span class="number">_</span>rc == <span class="literal">NULL</span>)</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                tmp = tmp-&gt;<span class="number">_</span>rc;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (tmp-&gt;<span class="number">_</span>val &gt; val)</div><div class="line">        tmp-&gt;<span class="number">_l</span>c = node;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        tmp-&gt;<span class="number">_</span>rc = node;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 构建二叉树</div><div class="line"> * @param arr 构建二叉树的输入-数组</div><div class="line"> * @param len 数组的长度</div><div class="line"> * @return 二叉树根节点的指针</div><div class="line"> */</div><div class="line"><span class="function">bt *<span class="title">buildTree</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">size_t</span> len)</span> </span>&#123;</div><div class="line">    bt *head = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(bt));</div><div class="line">    head-&gt;<span class="number">_</span>val = arr[len - <span class="number">1</span>];</div><div class="line">    head-&gt;<span class="number">_</span>count = <span class="number">1</span>;</div><div class="line">    head-&gt;<span class="number">_l</span>c = <span class="literal">NULL</span>;</div><div class="line">    head-&gt;<span class="number">_</span>rc = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span> (i = len - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i) &#123;</div><div class="line">        insert(head, arr[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 中序遍历(采用的递归算法)</div><div class="line"> * @param node 当前的"根"节点指针</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">travelMidSeq</span><span class="params">(bt *node)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node-&gt;<span class="number">_l</span>c != <span class="literal">NULL</span>)</div><div class="line">        travelMidSeq(node-&gt;<span class="number">_l</span>c);</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">int</span> len = node-&gt;<span class="number">_</span>count;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; ++i)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, node-&gt;<span class="number">_</span>val);</div><div class="line">    <span class="keyword">if</span> (node-&gt;<span class="number">_</span>rc != <span class="literal">NULL</span>)</div><div class="line">        travelMidSeq(node-&gt;<span class="number">_</span>rc);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//记录当前已遍历元素的个数;</span></div><div class="line"><span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line"><span class="comment">//标记当前是否找到错误元素并记录错误元素的位置</span></div><div class="line"><span class="keyword">char</span> flag = <span class="number">-1</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 释放资源(递归算法)---实质就是后续遍历的算法,并校验数组中元素是不是后续遍历的顺序</div><div class="line"> * @param node 当前需要处理的节点指针</div><div class="line"> * @param arr 要排序的数组的指针</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">releaseTreeAndCheck</span><span class="params">(bt *node, <span class="keyword">int</span> *arr)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node-&gt;<span class="number">_l</span>c != <span class="literal">NULL</span>)</div><div class="line">        releaseTreeAndCheck(node-&gt;<span class="number">_l</span>c, arr);</div><div class="line">    <span class="keyword">if</span> (node-&gt;<span class="number">_</span>rc != <span class="literal">NULL</span>)</div><div class="line">        releaseTreeAndCheck(node-&gt;<span class="number">_</span>rc, arr);</div><div class="line">    <span class="keyword">if</span> (flag &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (*(arr + index) != node-&gt;<span class="number">_</span>val)</div><div class="line">            flag = index;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            index++;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d "</span>, node-&gt;<span class="number">_</span>val);</div><div class="line">    <span class="built_in">free</span>(node);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 打印数组</div><div class="line"> * @param arr 数组的指针</div><div class="line"> * @param len 数组的长度</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> *arr, <span class="keyword">size_t</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"the sequence of arr which is being sorted:\n"</span>);</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; ++i)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, *(arr + i));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">10</span>, <span class="number">13</span>, <span class="number">15</span>, <span class="number">14</span>, <span class="number">12</span>, <span class="number">8</span>&#125;;</div><div class="line">    <span class="comment">//int arr[] = &#123;1, 3, 2, 5, 7, 6, 4, 9, 11, 10, 13, 15, 14, 12, 8&#125;;</span></div><div class="line">    <span class="keyword">size_t</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"original sequence:\n"</span>);</div><div class="line">    print(arr, len);</div><div class="line"></div><div class="line">    bt *tree = buildTree(arr, len);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\nmiddle sequence travel result :\n"</span>);</div><div class="line">    travelMidSeq(tree);</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\nback sequence travel result :\n"</span>);</div><div class="line">    releaseTreeAndCheck(tree, arr);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (flag &gt;= <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"\nsorry! your input seems not the back sequence of a binary tree...\nthe wrong member from index %d"</span>, flag);</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"\ncongratulations! your input is the back sequence of a binary tree..."</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="附上测试结果"><a href="#附上测试结果" class="headerlink" title="附上测试结果:"></a>附上测试结果:</h4><figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">original sequence:</div><div class="line">the sequence of arr which is being sorted:</div><div class="line">1<span class="number"> 3 </span>2<span class="number"> 5 </span>7<span class="number"> 6 </span>4<span class="number"> 9 </span>11<span class="number"> 10 </span>13<span class="number"> 15 </span>14<span class="number"> 12 </span>8</div><div class="line">middle sequence travel result :</div><div class="line">1<span class="number"> 2 </span>3<span class="number"> 4 </span>5<span class="number"> 6 </span>7<span class="number"> 8 </span>9<span class="number"> 10 </span>11<span class="number"> 12 </span>13<span class="number"> 14 </span>15</div><div class="line">back sequence travel result :</div><div class="line">1<span class="number"> 3 </span>2<span class="number"> 5 </span>7<span class="number"> 6 </span>4<span class="number"> 9 </span>11<span class="number"> 10 </span>13<span class="number"> 15 </span>14<span class="number"> 12 </span>8</div><div class="line">congratulations! your input is the back sequence of a binary tree...</div></pre></td></tr></table></figure>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">original sequence:</div><div class="line">the sequence of arr which is being sorted:</div><div class="line">1<span class="number"> 3 </span>2<span class="number"> 5 </span>7<span class="number"> 9 </span>4<span class="number"> 9 </span>11<span class="number"> 10 </span>13<span class="number"> 15 </span>14<span class="number"> 12 </span>8</div><div class="line">middle sequence travel result :</div><div class="line">1<span class="number"> 2 </span>3<span class="number"> 4 </span>5<span class="number"> 7 </span>8<span class="number"> 9 </span>9<span class="number"> 10 </span>11<span class="number"> 12 </span>13<span class="number"> 14 </span>15</div><div class="line">back sequence travel result :</div><div class="line">1<span class="number"> 3 </span>2<span class="number"> 5 </span>7<span class="number"> 4 </span>9<span class="number"> 11 </span>10<span class="number"> 13 </span>15<span class="number"> 14 </span>12 8</div><div class="line">sorry! your input seems not the back sequence of a binary tree...</div><div class="line">the wrong member from index 5</div></pre></td></tr></table></figure>
+<p class="align_right"><br>    2016-09-15<br>— Maizi<br></p>
+
+
+                <hr>
+
+                
+                <!-- 多说 Share start -->
+                </style>
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="2016/09/15/BACK-SEQUENCE-OF-BINARY-TREE-JUDGE-2016-09-15/"
+                    data-title="A question about how to judge an array is the back sequence of a binary tree"
+                    data-url="https://maizi0122.github.io/2016/09/15/BACK-SEQUENCE-OF-BINARY-TREE-JUDGE-2016-09-15/"
+                    data-images="https://maizi0122.github.io/2016/09/15/BACK-SEQUENCE-OF-BINARY-TREE-JUDGE-2016-09-15/img/post-bg-2016.jpg"
+                    data-content="
+二叉树相关的算法问题
+问题描述如下:
+设计一个算法,判断是一个数组的元素顺序是某棵二叉树的后... | 麦子的博客 - IT匠人 | Maizi&#39;s Blog - a craftsman of Information Technology " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/09/15/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-15/" data-toggle="tooltip" data-placement="top" title="A few algorithm about array sorting">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/09/15/BINARY-TREE-LAYER-TRAVEL-2016-09-15/" data-toggle="tooltip" data-placement="top" title="A question about how to travel a binary tree in layer sequence">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/09/15/BACK-SEQUENCE-OF-BINARY-TREE-JUDGE-2016-09-15/"
+                        data-title="A question about how to judge an array is the back sequence of a binary tree"
+                        data-url="https://maizi0122.github.io/2016/09/15/BACK-SEQUENCE-OF-BINARY-TREE-JUDGE-2016-09-15/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+                        
+                          <a class="tag" href="/tags/#Binary Tree" title="Binary Tree">Binary Tree</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://luics.com/" target="_blank">Alibaba-luics</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'maizi-github';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://maizi0122.github.io/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/maizi0122">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Maizi&#39;s Blog 2016
+                    <br/>
+                    Powered by <a href="https://maizi0122.github.io">Maizi</a><br/>
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=maizi0122&repo=Ripened&type=star&count=true" >
+                    </iframe><br/>
+                    <span id="busuanzi_value_site_pv"></span>th visit
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://maizi0122.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://maizi0122.github.io/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-84264150-1';
+    var _gaDomain = 'github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8b35f5fc93783caa6533273688f619f3';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+<!-- visit counter -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
