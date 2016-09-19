@@ -114,12 +114,12 @@
                     
 
                         
-                    
-
-                        
                         <li>
                             <a href="/tags/">Tag</a>
                         </li>
+                        
+                    
+
                         
                     -->
 
@@ -198,26 +198,24 @@
 
 <div class="post-preview">
 
-    <a href="/2016/09/15/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-15/">
+    <a href="/2016/09/16/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-16/">
         <h2 class="post-title">
             A few algorithm about array sorting
         </h2>
         <h3 class="post-subtitle">
-            bubble sorting | choosing sorting | inserting sorting
+            shell sorting | fast sorting | merging sorting
         </h3>
         <div class="post-content-preview">
             
-排序算法合集之起泡
+排序算法合集之希尔
 
 
-起泡排序算法描述:算法分析: 假若排成升序,用顺序表的数据结构来解决这些问题①第一趟结尾位置为数组的最后一个元素,从数组的第一个元素开始依次和其后面的元素比较,若后面的元素较小则交换这两个元素.这样第一趟跑完数组中最大的元素肯定在当前的结尾位置上,后面的每趟都依次将结尾位置向前移动一个位置②重复 ① 中的过程直至该趟的结尾位置和起始位置重合则说明排完了
-
-起泡排序算......
+希尔排序算法描述:算法分析: 假若排成升序,用顺序表的数据结构来解决该问题,希尔排序是对直接插入排序的改进算法,该算法的时间复杂度O(n)=nlog₂n(最好时复杂度)①先找到一种算法对整个数组进行’分列’,该博文中使用的是用数组长度加一依次除以 2 3 4…得到的结果最为每’列’中元素相邻位置在原一维数组中的 增量 ②将 ① 中的每一列依次进行直接插入排序,直至最......
         </div>
     </a>
     <p class="post-meta">
         Posted by Maizi on
-        2016-09-15
+        2016-09-16
     </p>
 
 </div>
@@ -225,19 +223,18 @@
 
 <div class="post-preview">
 
-    <a href="/2016/09/15/BACK-SEQUENCE-OF-BINARY-TREE-JUDGE-2016-09-15/">
+    <a href="/2016/09/15/CASTING_EGG_FROM_MICROSOFT-2016-09-15/">
         <h2 class="post-title">
-            A question about how to judge an array is the back sequence of a binary tree
+            A question of interview about egg casting from microsoft
         </h2>
         <h3 class="post-subtitle">
-            know everything about the binary tree can do it easily
+            use algorithm of dynamic planning can easily deal with it
         </h3>
         <div class="post-content-preview">
             
-二叉树相关的算法问题
+来自微软的扔鸡蛋面试题
 问题描述如下:
-设计一个算法,判断是一个数组的元素顺序是某棵二叉树的后续遍历的顺序
-算法描述:算法分析:如果这个数组的元素顺序是某棵二叉树的后续遍历的顺序,那么从数组的最后一个元素依次向前取元素可以重建这棵二叉树.①从数组的最后一个元素依次向前取元素重建这棵二叉树.③后续遍历 ① 中重建的二叉树依次序与数组中的元素对比,如果都相同则说明数组的元素顺序是某棵二叉树的后续......
+有一栋楼共100层，一个鸡蛋从第N层及以上的楼层落下来会摔破，在第N层以下的楼层落下不会摔破。给你2个鸡蛋，设计方案找出N，并且保证在最坏情况下， 最小化鸡蛋下落的次数。(假设每次摔落时，如果没有摔碎，则不会给鸡蛋带来损耗)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;据说下图的力学结构可以保证鸡蛋从......
         </div>
     </a>
     <p class="post-meta">
@@ -250,33 +247,7 @@
 
 <div class="post-preview">
 
-    <a href="/2016/09/15/BINARY-TREE-LAYER-TRAVEL-2016-09-15/">
-        <h2 class="post-title">
-            A question about how to travel a binary tree in layer sequence
-        </h2>
-        <h3 class="post-subtitle">
-            select a right data structure can solve it easily
-        </h3>
-        <div class="post-content-preview">
-            
-怎么按层的先后顺序且每层按从左至右的顺序遍历二叉树
-问题描述如下:
-设计一个算法,按层级的先后顺序来遍历二叉树,且每层元素的遍历顺序也是按从左到右的次序
-
-算法描述:①使用链表来实现队列(用该队列来实现按层访问).②首先将二叉树的根节点放入队列.获取首元素在二叉树中的左右孩子节点,将首元素出队列,然后将左右孩子(存在的话)依次序入队列并维护队列的首位指针的指向.③重复执行 ② 中的操作.直......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Maizi on
-        2016-09-15
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2016/09/15/BUILD-BINARY-TREE-FROM-ITS-FRONT-SEQUENCE/">
+    <a href="/2016/09/15/BUILD_BINARY_TREE_FROM_ITS_FRONT_SEQUENCE-2016-09-15/">
         <h2 class="post-title">
             A question about how to build a binary tree from its front traval sequence and middle travel sequence
         </h2>
@@ -302,20 +273,20 @@
 
 <div class="post-preview">
 
-    <a href="/2016/09/15/CAST-EGG-MICROSOFT-2016-09-15/">
+    <a href="/2016/09/15/BINARY_TREE_LAYER_TRAVEL-2016-09-15/">
         <h2 class="post-title">
-            A question of interview about egg casting from microsoft
+            A question about how to travel a binary tree in layer sequence
         </h2>
         <h3 class="post-subtitle">
-            use algorithm of dynamic planning can easily deal with it
+            select a right data structure can solve it easily
         </h3>
         <div class="post-content-preview">
             
-来自微软的扔鸡蛋面试题
+怎么按层的先后顺序且每层按从左至右的顺序遍历二叉树
 问题描述如下:
-有一栋楼共100层，一个鸡蛋从第N层及以上的楼层落下来会摔破，在第N层以下的楼层落下不会摔破。给你2个鸡蛋，设计方案找出N，并且保证在最坏情况下， 最小化鸡蛋下落的次数。(假设每次摔落时，如果没有摔碎，则不会给鸡蛋带来损耗)
+设计一个算法,按层级的先后顺序来遍历二叉树,且每层元素的遍历顺序也是按从左到右的次序
 
-算法描述:算法分析: 在保证能确切知道哪一层是分割点的前提下,该问题很显然采用动态规划会有比较好的①从第二层开始,两层的两层......
+算法描述:①使用链表来实现队列(用该队列来实现按层访问).②首先将二叉树的根节点放入队列.获取首元素在二叉树中的左右孩子节点,将首元素出队列,然后将左右孩子(存在的话)依次序入队列并维护队列的首位指针的指向.③重复执行 ② 中的操作.直......
         </div>
     </a>
     <p class="post-meta">
@@ -328,7 +299,57 @@
 
 <div class="post-preview">
 
-    <a href="/2016/09/15/DIDI-BUS-2016-09-15/">
+    <a href="/2016/09/15/BACK_SEQUENCE_OF_BINARY_TREE_JUDGE-2016-09-15/">
+        <h2 class="post-title">
+            A question about how to judge an array is the back sequence of a binary tree
+        </h2>
+        <h3 class="post-subtitle">
+            know everything about the binary tree can do it easily
+        </h3>
+        <div class="post-content-preview">
+            
+二叉树相关的算法问题
+问题描述如下:
+设计一个算法,判断是一个数组的元素顺序是某棵二叉树的后续遍历的顺序
+算法描述:算法分析:如果这个数组的元素顺序是某棵二叉树的后续遍历的顺序,那么从数组的最后一个元素依次向前取元素可以重建这棵二叉树.①从数组的最后一个元素依次向前取元素重建这棵二叉树.③后续遍历 ① 中重建的二叉树依次序与数组中的元素对比,如果都相同则说明数组的元素顺序是某棵二叉树的后续......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Maizi on
+        2016-09-15
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/09/15/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-15/">
+        <h2 class="post-title">
+            A few algorithm about array sorting
+        </h2>
+        <h3 class="post-subtitle">
+            bubble sorting | choosing sorting | inserting sorting
+        </h3>
+        <div class="post-content-preview">
+            
+排序算法合集之起泡
+
+
+起泡排序算法描述:算法分析: 假若排成升序,用顺序表的数据结构来解决该问题,该算法的时间复杂度O(n)=n²①第一趟结尾位置为数组的最后一个元素,从数组的第一个元素开始依次和其后面的元素比较,若后面的元素较小则交换这两个元素.这样第一趟跑完数组中最大的元素肯定在当前的结尾位置上,后面的每趟都依次将结尾位置向前移动一个位置②重复 ① 中的过程直至该趟的结尾位置和起始位......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Maizi on
+        2016-09-15
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/09/15/DIDI_BUS-2016-09-15/">
         <h2 class="post-title">
             A question of interview from DIDI-BUS
         </h2>
@@ -380,11 +401,11 @@
                     <div class="tags">
                         
                             
-                            <a href="/tags/#Algorithm" title="Algorithm" rel="6">Algorithm</a>
+                            <a href="/tags/#Algorithm" title="Algorithm" rel="7">Algorithm</a>
                             
                         
                             
-                            <a href="/tags/#Sorting" title="Sorting" rel="1">Sorting</a>
+                            <a href="/tags/#Sorting" title="Sorting" rel="2">Sorting</a>
                             
                         
                             
