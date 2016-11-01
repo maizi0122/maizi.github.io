@@ -18,7 +18,7 @@
         
     </title>
 
-    <link rel="canonical" href="https://maizi0122.github.io/2016/09/16/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-16/">
+    <link rel="canonical" href="https://maizi0122.github.io/2016/09/24/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-24/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -187,10 +187,10 @@
                         
                     </div>
                     <h1>A few algorithm about array sorting</h1>
-                    <h2 class="subheading">shell sorting | fast sorting | merging sorting</h2>
+                    <h2 class="subheading">binary-tree sorting | stack sorting</h2>
                     <span class="meta">
                         Posted by Maizi on
-                        2016-09-16 with <span id="busuanzi_value_page_pv"></span> time read
+                        2016-09-24 with <span id="busuanzi_value_page_pv"></span> time read
                     </span>
 
                 </div>
@@ -211,10 +211,10 @@
                 post-container">
 
                 <blockquote>
-<font class="standout_color">排序算法合集之希尔</font>
+<font class="standout_color">排序算法合集之二叉树</font>
 
 </blockquote>
-<h4 id="希尔排序算法描述"><a href="#希尔排序算法描述" class="headerlink" title="希尔排序算法描述:"></a>希尔排序算法描述:</h4><p><div class="indent"><br>算法分析: <br><br>假若排成升序,用顺序表的数据结构来解决该问题,希尔排序是对直接插入排序的改进算法,该算法的时间复杂度O(n)=nlog₂n(最好时复杂度)<br><br>①先找到一种算法对整个数组进行’分列’,该博文中使用的是用数组长度加一依次除以 2 3 4…得到的结果最为每’列’中元素相邻位置在原一维数组中的 <strong>增量</strong> <br><br>②将 <strong>①</strong> 中的每一列依次进行直接插入排序,直至最后 <strong>增量</strong> 为1时再对整个数组进行一次直接插入排序<br></div></p>
+<h4 id="二叉树排序算法描述"><a href="#二叉树排序算法描述" class="headerlink" title="二叉树排序算法描述:"></a>二叉树排序算法描述:</h4><p><div class="indent"><br>算法分析: <br><br>假若排成升序,用顺序表的数据结构来解决该问题,希尔排序是对直接插入排序的改进算法,该算法的时间复杂度O(n)=nlog₂n(最好时复杂度)<br><br>①先找到一种算法对整个数组进行’分列’,该博文中使用的是用数组长度加一依次除以 2 3 4…得到的结果最为每’列’中元素相邻位置在原一维数组中的 <strong>增量</strong> <br><br>②将 <strong>①</strong> 中的每一列依次进行直接插入排序,直至最后 <strong>增量</strong> 为1时再对整个数组进行一次直接插入排序<br></div></p>
 <p><div class="center"><img src="shell-sorting.jpg"></div></p>
 <h4 id="希尔排序算法优劣"><a href="#希尔排序算法优劣" class="headerlink" title="希尔排序算法优劣:"></a>希尔排序算法优劣:</h4><p><div>优势 : 算法的空间复杂度较小<br>劣势 : 算法略复杂,且时间复杂度还是不小,但相对于n²还是小了不少.<br></div></p>
 <h4 id="贴上代码"><a href="#贴上代码" class="headerlink" title="贴上代码:"></a>贴上代码:</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 直接插入排序</div><div class="line"> * @param arr 待排序的数组</div><div class="line"> * @param col 当前对第几'列'进行操作</div><div class="line"> * @param delta 当前每列中相邻元素在待排序一维数组中的增量</div><div class="line"> * @param len 该'列'元素的个数</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">inserting_sort</span><span class="params">(<span class="keyword">int</span> *arr, <span class="keyword">int</span> <span class="keyword">const</span> col, <span class="keyword">int</span> <span class="keyword">const</span> delta, <span class="keyword">int</span> <span class="keyword">const</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; len; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = i - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> (low &lt; high) &#123;<span class="comment">//二分搜索定位</span></div><div class="line">            <span class="keyword">int</span> pivot = (low + high) &gt;&gt; <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (*(arr + col + pivot * delta) &gt; *(arr + col + i * delta))</div><div class="line">                high = pivot - <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                low = pivot + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (low == high)<span class="comment">//特殊情况处理</span></div><div class="line">            <span class="keyword">if</span> (*(arr + col + low * delta) &lt; *(arr + col + i * delta))</div><div class="line">                low++;</div><div class="line">        <span class="keyword">for</span> (j = i; j &gt; low; --j) &#123;<span class="comment">//元素交换</span></div><div class="line">            *(arr + col + j * delta) += *(arr + col + (j - <span class="number">1</span>) * delta);</div><div class="line">            *(arr + col + (j - <span class="number">1</span>) * delta) = *(arr + col + j * delta) - *(arr + col + (j - <span class="number">1</span>) * delta);</div><div class="line">            *(arr + col + j * delta) = *(arr + col + j * delta) - *(arr + col + (j - <span class="number">1</span>) * delta);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 希尔排序</div><div class="line"> * @param arr 待排序的数组</div><div class="line"> * @param len 数组的长度</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span> *<span class="keyword">const</span> arr, <span class="keyword">size_t</span> <span class="keyword">const</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> row = <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> delta = (len + <span class="number">1</span>) / row;   <span class="comment">//首次将数组分成两半</span></div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        <span class="keyword">int</span> residue = len % delta;  <span class="comment">//数组长度模增量的余数</span></div><div class="line">        <span class="keyword">int</span> base_col_len = len / delta;  <span class="comment">//列数组长度的基数</span></div><div class="line">        <span class="keyword">int</span> i;</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; delta; i++) &#123;</div><div class="line">            <span class="keyword">int</span> j;</div><div class="line">            <span class="keyword">if</span> (residue &amp;&amp; i &lt; residue)  <span class="comment">//若余数大于０且ｉ的值小于余数，那么当前列数组的长度为基数加一</span></div><div class="line">                j = <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span>  <span class="comment">//否则，当前数组的长度就等于基长度</span></div><div class="line">                j = <span class="number">0</span>;</div><div class="line">            inserting_sort(arr, i, delta, base_col_len + j);</div><div class="line">        &#125;</div><div class="line">        delta = (len + <span class="number">1</span>) / row++;</div><div class="line">    &#125; <span class="keyword">while</span> (delta != <span class="number">2</span> &amp;&amp; delta &gt; <span class="number">2</span>);</div><div class="line">    inserting_sort(arr, <span class="number">0</span>, <span class="number">1</span>, len);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 打印数组</div><div class="line"> * @param arr 数组的指针</div><div class="line"> * @param len 数组的长度</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> <span class="keyword">const</span> *<span class="keyword">const</span> arr, <span class="keyword">size_t</span> <span class="keyword">const</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"the sequence of arr which have been sorted:\n"</span>);</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; ++i)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, *(arr + i));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">12</span>, <span class="number">11</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;;</div><div class="line">    <span class="keyword">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    shellSort(arr, len);</div><div class="line">    print(arr, len);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -247,15 +247,15 @@
                 </style>
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="2016/09/16/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-16/"
+                    data-thread-key="2016/09/24/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-24/"
                     data-title="A few algorithm about array sorting"
-                    data-url="https://maizi0122.github.io/2016/09/16/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-16/"
-                    data-images="https://maizi0122.github.io/2016/09/16/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-16/img/post-bg-2016.jpg"
+                    data-url="https://maizi0122.github.io/2016/09/24/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-24/"
+                    data-images="https://maizi0122.github.io/2016/09/24/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-24/img/post-bg-2016.jpg"
                     data-content="
-排序算法合集之希尔
+排序算法合集之二叉树
 
 
-希尔排序算法描述:算法分析: 假若排成升序,用顺序表的数据结构来解决... | 麦子的博客 - IT匠人 | Maizi&#39;s Blog - a craftsman of Information Technology " >
+二叉树排序算法描述:算法分析: 假若排成升序,用顺序表的数据结构来... | 麦子的博客 - IT匠人 | Maizi&#39;s Blog - a craftsman of Information Technology " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -273,13 +273,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/09/24/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-24/" data-toggle="tooltip" data-placement="top" title="A few algorithm about array sorting">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2016/09/15/CASTING_EGG_FROM_MICROSOFT-2016-09-15/" data-toggle="tooltip" data-placement="top" title="A question of interview about egg casting from microsoft">Next Post &rarr;</a>
+                            <a href="/2016/09/16/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-16/" data-toggle="tooltip" data-placement="top" title="A few algorithm about array sorting">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -288,9 +284,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/09/16/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-16/"
+                        data-thread-key="2016/09/24/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-24/"
                         data-title="A few algorithm about array sorting"
-                        data-url="https://maizi0122.github.io/2016/09/16/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-16/" >
+                        data-url="https://maizi0122.github.io/2016/09/24/ALGORITHM_ABOUT_ARRAY_SORTING-2016-09-24/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
